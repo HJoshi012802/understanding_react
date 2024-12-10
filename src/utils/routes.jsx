@@ -8,6 +8,7 @@ import '../index.css'
 import UseMemoExampleTwo from '../components/useMemo/useMemoExampleTwo';
 import UseRefExample from '../components/useRef/useRefExample';
 import UseContext from '../components/useContext';
+import UseReducer from "../components/useReducer"
 
 export const router = createBrowserRouter([
     {
@@ -51,7 +52,7 @@ export const router = createBrowserRouter([
         },
         {
           path: "useReducer",
-          element: <h1>useState</h1>
+          element: <UseReducer/>
         },
         {
           path: "useImperativeHandle",
