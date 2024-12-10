@@ -7,6 +7,7 @@ import UseMemoExample from '../components/useMemo/useMemoExample';
 import '../index.css'
 import UseMemoExampleTwo from '../components/useMemo/useMemoExampleTwo';
 import UseRefExample from '../components/useRef/useRefExample';
+import UseContext from '../components/useContext';
 
 export const router = createBrowserRouter([
     {
@@ -46,7 +47,7 @@ export const router = createBrowserRouter([
         },
         {
           path: "useContext",
-          element:<h1>useState</h1>
+          element:<UseContext/>
         },
         {
           path: "useReducer",
