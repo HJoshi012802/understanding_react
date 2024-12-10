@@ -1,27 +1,68 @@
-import { Outlet } from "react-router-dom"
+import { useState, useCallback } from 'react';
+import  Search  from './Search.jsx';
+import SearchTwo from './SearchTwo.jsx';
+import shuffle from "../../utils/shuffle.js";
 
-function  ParentComponentForCallback() {
+const allUsers = [
+  'john',
+  'alex', 
+  'george', 
+  'simon', 
+  'james'
+];
+
+function ParentComponentForCallback() {
+  const [users, setUsers] = useState(allUsers);
+  const [usersone, setUsersOne] = useState(allUsers);
+
+  // Using useCallback to memoize the handleSearch function
+  const handleSearch = useCallback((text) =>{
+    console.log("Search 1 "+users[0]);
+    const filteredUsers = allUsers.filter((user)=>
+      user.includes(text),
+    )
+    setUsers(filteredUsers);
+ 
+  },[users])
+
+  const handleSearchOne = useCallback((text) =>{
+    console.log("Search 2 "+usersone[0]);
+    const filteredUsers = allUsers.filter((user)=>
+      user.includes(text),
+    )
+    setUsersOne(filteredUsers);
+  },[usersone])
+
+  // Handler for shuffling users
+  const handleShuffle = (() => {
+    setUsers(shuffle(allUsers));
+  });
+
   return (
-    <div className="pt-[100px]">
-        <h1 className="text-3xl font-bold text-center mb-6">
+    <div className="pt-[100px] bg-slate-400">
+      <h1 className="text-3xl font-bold text-center mb-6">
         Understanding useCallback in React
       </h1>
-      <div className="flex gap-6">
-
-      <div className="mockup-browser bg-base-300 border w-[50%]">
-  <div className="mockup-browser-toolbar">
-    <div className="input">https://useCallback.com</div>
-  </div>
-  <div className="bg-base-200 flex justify-center px-4 py-16">useCallback is a React hook that returns a memoized version of a callback function. The primary purpose is to optimize performance by preventing unnecessary re-renders and reducing the creation of new function references.</div>
-</div>
-      <div className="mockup-code w-[50%]">
-       <pre data-prefix="$"><code>npm i daisyui</code></pre>
-       <pre data-prefix=">" className="text-warning"><code>installing...</code></pre>
-       <pre data-prefix=">" className="text-success"><code>Done!</code></pre>
-      </div>
-      </div>
+      <button 
+        onClick={handleShuffle} 
+        className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
+      >
+        Shuffle Users
+      </button>
+      <Search onChange={handleSearch}/> 
+      <SearchTwo onChange={handleSearchOne}/> 
+      <ul>
+        {users.map((user) => (
+          <li key={user} className="py-1">{user}</li>
+        ))}
+      </ul>
+      <ul>
+        {usersone.map((user) => (
+          <li key={user} className="py-1">{user}</li>
+        ))}
+      </ul>
     </div>
-  )
+  );
 }
 
-export default  ParentComponentForCallback
+export default ParentComponentForCallback;
