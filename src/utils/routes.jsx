@@ -3,7 +3,9 @@ import Home from '../pages/Home'
 import App from "../App"
 import Hooks from '../components/Hooks'
 import ParentComponentForCallback from "../components/useCallback/ParentComponetForCallback";
+import UseMemoExample from '../components/useMemo/useMemoExample';
 import '../index.css'
+import UseMemoExampleTwo from '../components/useMemo/useMemoExampleTwo';
 
 export const router = createBrowserRouter([
     {
@@ -35,7 +37,7 @@ export const router = createBrowserRouter([
         },
         {
           path: "useMemo",
-          element:<h1>useState</h1>
+          element:<UseMemoExampleTwo/>
         },
         {
           path: "useCallback",
