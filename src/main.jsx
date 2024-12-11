@@ -3,6 +3,8 @@ import { RouterProvider } from 'react-router-dom'
 import { router } from "./utils/routes"
 import UserContext from './utils/UserContext'
 import { useState } from 'react'
+import { Provider } from 'react-redux'
+import { store } from './components/Redux/store'
 
 // Create the root component
 const Capp = () => {
@@ -24,5 +26,7 @@ const container = document.getElementById('root')
 const root = createRoot(container)
 
 root.render(
-  <Capp />
+  <Provider store={store}>
+    <Capp />
+  </Provider>
 )

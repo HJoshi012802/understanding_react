@@ -10,6 +10,7 @@ import UseRefExample from '../components/useRef/useRefExample';
 import UseContext from '../components/useContext';
 import UseReducer from "../components/useReducer";
 import ParentComponent from "../components/useImperativeHandle/ParentComponent"
+import Redux from '../pages/Redux';
 
 export const router = createBrowserRouter([
     {
@@ -72,6 +73,10 @@ export const router = createBrowserRouter([
           element: <h1>useState</h1>
         },
       ],
+  },
+  {
+    path: '/redux',
+    element: <Redux />,
   },
   {
     path: '*',
